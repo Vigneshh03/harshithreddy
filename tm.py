@@ -313,4 +313,18 @@ class TaskCLI:
                 print(f"Task {args.id} deleted")
             else:
                 print(f"Task {args.id} not found")
+                elif args.command == 'search':
+            tasks = self.manager.search_tasks(args.query)
+            if tasks:
+                for task in tasks:
+                    print(self.format_task(task))
+            else:
+                print("No tasks found matching your query")
+        
+        elif args.command == 'stats':
+            self.show_statistics()
+        
+        elif args.command == 'interactive':
+            self.add_task_interactive()
+
 
